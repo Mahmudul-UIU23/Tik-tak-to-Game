@@ -80,6 +80,18 @@ public class Main {
         }
        
     }
+  private void printGameOver(){
+    drawBoard();
+    System.out.println("\uD83c\uDFAE Game Over!  \uD83c\uDFAE");
+    if (whowonthegame !=null) {
+        System.out.println(whowonthegame +" Won the Game" + "Congaratulation! From Mehedi");
+    }
+    else{
+        System.out.println("Sounds like tie play it again!");
+    }
+  }
+
+
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
     }
