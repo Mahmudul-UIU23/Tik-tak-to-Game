@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
     private static final char Empty_Box = ' ';
     private static final char Player_1 = 'X';
-    private static final char Player_O = 'O';
+    private static final char Player_2 = 'O';
     private  static final char[][] gameboard = new char[3][3];
     private final  Scanner input = new Scanner(System.in);
     private String playerone;
@@ -45,14 +45,41 @@ public class Main {
          currentPlayer = playertwo;
             }
     }
+
+
     private boolean isgamenotover(){
-        while(true){
-   
+        return !(isBoardisFull() || hasAnyPlayerwin());
+    }
+    private void drawBoard(){
+        System.out.println("|---|---|---|");
+        for (char[] chars : gameboard) {
+            System.out.println("| %c | %c | %c | %n , Chars[0], Chars[1] ,Chars[2]");
+            System.out.println("|---|---|---|");
         }
     }
 
+    private void printPlayerTrun(){
+        System.out.println(whoisplaying() +"'s turn");
+    }
 
-
+    private void askForManeuver(){
+        int row;
+        int col;
+        do{
+            System.out.println("Enter a row number (0, 1, or 2): ");
+            row = input.nextInt();
+            System.out.println("Enter a col number (0, 1, or 2): ");
+            col = input.nextInt();
+        } while (!validdateInput(row,col)); 
+        if(whoisplaying().equlas(playerone)){ 
+            gameboard[row][col] = Player_1;
+            currentPlayer = playertwo;
+        }else {
+            gameboard[row][col] = Player_2;
+            currentPlayer = playerone;
+        }
+       
+    }
     public static void main(String[] args) {
         System.out.println("Hello and welcome!");
     }
